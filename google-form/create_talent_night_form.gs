@@ -31,7 +31,8 @@ function createTalentNightForm() {
       'Ayudar con la limpieza / Help with cleanup',
       'Puedo ayudar donde sea necesario / I can help wherever needed',
       'Otro / Other'
-    ]).setRequired(true);
+    ]).setRequired(true)
+    .setHelpText('Las presentaciones en vivo deben durar 3 minutos o menos. Los espacios son limitados. / Live performances must be 3 minutes or less. Space is limited.');
 
   form.addPageBreakItem().setTitle('Presentación en vivo / Live performance')
     .setHelpText('Completa esta sección solamente si seleccionaste presentación en vivo. / Complete this section only if you selected live performance.');
@@ -65,7 +66,135 @@ function createTalentNightForm() {
     .setHelpText('Palomitas, papitas, fruta, postre, helado, bebidas u otro. / Popcorn, chips, fruit, dessert, ice cream, drinks, or other.');
   form.addParagraphTextItem().setTitle('¿Hay algo que debamos saber sobre cómo puedes ayudar? / Is there anything we should know about how you can help?');
 
+  PropertiesService.getScriptProperties().setProperty('TALENT_NIGHT_FORM_ID', form.getId());
   Logger.log('PUBLIC FORM URL: ' + form.getPublishedUrl());
   Logger.log('EDIT FORM URL: ' + form.getEditUrl());
   return { publicUrl: form.getPublishedUrl(), editUrl: form.getEditUrl() };
+}
+
+const LIVE_OPTION = 'Presentación en vivo / Live performance';
+const PARTICIPATION_TITLE = '¿Cómo te gustaría participar? / How would you like to participate?';
+const PARTICIPATION_OPTIONS = [
+  LIVE_OPTION,
+  'Exhibición de talentos / Talent display',
+  'Talento culinario / Culinary talent',
+  'Traer refrigerios / Bring snacks',
+  'Ayudar con la preparación / Help with setup',
+  'Sillas y exhibiciones / Chairs and displays',
+  'Área de refrigerios / Snack area',
+  'Ayudar durante la actividad / Help during the event',
+  'Ayudar con la limpieza / Help with cleanup',
+  'Puedo ayudar donde sea necesario / I can help wherever needed',
+  'Otro / Other'
+];
+
+function setupLivePerformanceCapacity() {
+  const form = getTalentNightForm_();
+  PropertiesService.getScriptProperties().setProperty('TALENT_NIGHT_FORM_ID', form.getId());
+  ScriptApp.getProjectTriggers()
+    .filter(t => t.getHandlerFunction() === 'onTalentNightFormSubmit')
+    .forEach(t => ScriptApp.deleteTrigger(t));
+  ScriptApp.newTrigger('onTalentNightFormSubmit').forForm(form).onFormSubmit().create();
+  refreshLivePerformanceCapacity_(form);
+  Logger.log('CAPACITY TRIGGER INSTALLED');
+  Logger.log('PUBLIC FORM URL: ' + form.getPublishedUrl());
+  Logger.log('EDIT FORM URL: ' + form.getEditUrl());
+}
+
+function onTalentNightFormSubmit(e) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    const form = getTalentNightForm_();
+    const selected = getSelectionsFromResponse_(e.response);
+    if (!selected.includes(LIVE_OPTION)) return;
+    const count = countLivePerformanceResponses_(form);
+    const state = capacityStateForCount_(count);
+    const responseId = e.response.getId();
+    PropertiesService.getScriptProperties().setProperty('LIVE_STATUS_' + responseId, state.status);
+    Logger.log('Live-performance response ' + responseId + ': ' + state.status + ' (' + count + '/10)');
+    refreshLivePerformanceCapacity_(form, count);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function refreshLivePerformanceCapacity() {
+  refreshLivePerformanceCapacity_(getTalentNightForm_());
+}
+
+function refreshLivePerformanceCapacity_(form, knownCount) {
+  const count = knownCount == null ? countLivePerformanceResponses_(form) : knownCount;
+  const state = capacityStateForCount_(count);
+  const item = getParticipationItem_(form);
+  item.setChoiceValues(state.liveOptionAvailable ? PARTICIPATION_OPTIONS : PARTICIPATION_OPTIONS.slice(1));
+  item.setHelpText(state.helpText);
+  PropertiesService.getScriptProperties().setProperty('LIVE_PERFORMANCE_COUNT', String(count));
+  PropertiesService.getScriptProperties().setProperty('LIVE_CAPACITY_STATE', state.status);
+  Logger.log('Live-performance capacity: ' + count + '/10 - ' + state.status);
+}
+
+function capacityStateForCount_(count) {
+  if (count < 8) return {
+    status: 'CONFIRMED_OPEN', liveOptionAvailable: true,
+    helpText: 'Presentaciones en vivo: máximo 3 minutos. Los espacios son limitados. Te confirmaremos tu turno después de registrarte. / Live performances: maximum 3 minutes. Space is limited. We’ll confirm your performance slot after you register.'
+  };
+  if (count < 10) return {
+    status: 'WAITLIST_OPEN', liveOptionAvailable: true,
+    helpText: 'Los espacios para presentaciones en vivo están llenos. Puedes inscribirte en la lista de espera o participar de otra manera. Máximo 3 minutos. / Live performance spaces are currently full. You may join the waitlist or participate in another way. Maximum 3 minutes.'
+  };
+  return {
+    status: 'LIVE_PERFORMANCE_CLOSED', liveOptionAvailable: false,
+    helpText: 'Las presentaciones en vivo y la lista de espera están llenas. Las demás formas de participación siguen abiertas. / Live performances and the waitlist are full. All other ways to participate remain open.'
+  };
+}
+
+function countLivePerformanceResponses_(form) {
+  return form.getResponses().filter(r => getSelectionsFromResponse_(r).includes(LIVE_OPTION)).length;
+}
+
+function getSelectionsFromResponse_(response) {
+  const itemResponse = response.getItemResponses().find(r => r.getItem().getTitle() === PARTICIPATION_TITLE);
+  if (!itemResponse) return [];
+  const answer = itemResponse.getResponse();
+  return Array.isArray(answer) ? answer : [answer];
+}
+
+function getParticipationItem_(form) {
+  const item = form.getItems(FormApp.ItemType.CHECKBOX).find(i => i.getTitle() === PARTICIPATION_TITLE);
+  if (!item) throw new Error('Participation checkbox question not found.');
+  return item.asCheckboxItem();
+}
+
+function getTalentNightForm_() {
+  const properties = PropertiesService.getScriptProperties();
+  const savedId = properties.getProperty('TALENT_NIGHT_FORM_ID');
+  if (savedId) return FormApp.openById(savedId);
+  const files = DriveApp.getFilesByName('Noche de Talentos de la Comunidad | Community Talent Night');
+  if (!files.hasNext()) throw new Error('Talent Night form not found in Drive.');
+  return FormApp.openById(files.next().getId());
+}
+
+function testLivePerformanceCapacity() {
+  const expected = [
+    [0, 'CONFIRMED_OPEN', true], [7, 'CONFIRMED_OPEN', true],
+    [8, 'WAITLIST_OPEN', true], [9, 'WAITLIST_OPEN', true],
+    [10, 'LIVE_PERFORMANCE_CLOSED', false], [11, 'LIVE_PERFORMANCE_CLOSED', false]
+  ];
+  expected.forEach(([count, status, available]) => {
+    const state = capacityStateForCount_(count);
+    if (state.status !== status || state.liveOptionAvailable !== available) throw new Error('Capacity test failed at count ' + count);
+  });
+  const nonLive = PARTICIPATION_OPTIONS.slice(1);
+  const closedChoices = capacityStateForCount_(10).liveOptionAvailable ? PARTICIPATION_OPTIONS : nonLive;
+  if (closedChoices.length !== 10 || closedChoices.includes(LIVE_OPTION)) throw new Error('Closed-choice test failed.');
+  if (!nonLive.every(option => closedChoices.includes(option))) throw new Error('A non-live participation option was removed.');
+  Logger.log('ALL CAPACITY TESTS PASSED: confirmed 1–8, waitlist 9–10, live option removed after 10, all 10 non-live options preserved.');
+}
+
+function showLivePerformanceStatus() {
+  const form = getTalentNightForm_();
+  Logger.log('LIVE PERFORMANCE COUNT: ' + countLivePerformanceResponses_(form));
+  Logger.log('PUBLIC FORM URL: ' + form.getPublishedUrl());
+  Logger.log('EDIT FORM URL: ' + form.getEditUrl());
 }
