@@ -2,7 +2,7 @@ const event = {
   dateEn: "Monday, September 14, 2026",
   dateEs: "Lunes, 14 de septiembre de 2026",
   time: "6:30 PM–8:00 PM",
-  street: "1433 Aversboro Road",
+  street: "1433 Aversboro Rd",
   city: "Garner, NC 27529",
 };
 
@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </div>
 
-        <a className="primaryButton" href="#participate">Share your talent · Comparte tu talento</a>
+        <a className="primaryButton" href="#participate" data-form-link>Share your talent · Comparte tu talento</a>
         <p className="free">Free community event · Evento comunitario gratuito</p>
       </section>
 
@@ -79,7 +79,7 @@ export default function Home() {
           <span className="kicker">Save the date · Reserva la fecha</span>
           <h2 id="location-title">Meet us in Garner</h2>
           <p>The Church of Jesus Christ of Latter-day Saints<br />{event.street}<br />{event.city}</p>
-          <a className="directions" href="https://www.google.com/maps/search/?api=1&query=1433+Aversboro+Road+Garner+NC+27529" target="_blank" rel="noreferrer">Get directions · Cómo llegar ↗</a>
+          <a className="directions" href="https://www.google.com/maps/search/?api=1&query=1433+Aversboro+Rd+Garner+NC+27529" target="_blank" rel="noreferrer">Get directions · Cómo llegar ↗</a>
         </div>
         <div className="dateStamp" aria-label={`${event.dateEn}, ${event.time}`}>
           <span>SEP</span>

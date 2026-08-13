@@ -13,7 +13,7 @@ Share your talent with the community! Performers of all ages are invited to part
 **Monday, September 14, 2026 / Lunes, 14 de septiembre de 2026**  
 **6:30 PM–8:00 PM**  
 **The Church of Jesus Christ of Latter-day Saints**  
-**1433 Aversboro Road, Garner, NC 27529**
+**1433 Aversboro Rd, Garner, NC 27529**
 
 Hosted by the Garner 2 Branch of The Church of Jesus Christ of Latter-day Saints.  
 Organizado por la Rama Garner 2 de La Iglesia de Jesucristo de los Santos de los Últimos Días.
@@ -75,6 +75,6 @@ Organizado por la Rama Garner 2 de La Iglesia de Jesucristo de los Santos de los
 
 ## Confirmation message
 
-Thank you for signing up for Community Talent Night! We received your information and will contact you with performance details. We look forward to seeing you Monday, September 14, 2026, from 6:30 PM–8:00 PM at 1433 Aversboro Road, Garner, NC 27529.
+Thank you for signing up for Community Talent Night! We received your information and will contact you with performance details. We look forward to seeing you Monday, September 14, 2026, from 6:30 PM–8:00 PM at 1433 Aversboro Rd, Garner, NC 27529.
 
-¡Gracias por inscribirte en la Noche de Talentos de la Comunidad! Recibimos tu información y nos comunicaremos contigo con los detalles de la presentación. Te esperamos el lunes, 14 de septiembre de 2026, de 6:30 PM–8:00 PM en 1433 Aversboro Road, Garner, NC 27529.
+¡Gracias por inscribirte en la Noche de Talentos de la Comunidad! Recibimos tu información y nos comunicaremos contigo con los detalles de la presentación. Te esperamos el lunes, 14 de septiembre de 2026, de 6:30 PM–8:00 PM en 1433 Aversboro Rd, Garner, NC 27529.

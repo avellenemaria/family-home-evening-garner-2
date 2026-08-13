@@ -7,7 +7,7 @@ const fraunces = Fraunces({ variable: "--font-display", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Community Talent Night | Garner, NC",
-  description: "Join us Monday, September 14, 2026, from 6:30 PM–8:00 PM for a free bilingual community talent night in Garner, North Carolina.",
+  description: "Join us Monday, September 14, 2026, from 6:30 PM–8:00 PM at 1433 Aversboro Rd in Garner, North Carolina.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
