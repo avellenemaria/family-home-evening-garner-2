@@ -189,7 +189,20 @@ function testLivePerformanceCapacity() {
   const closedChoices = capacityStateForCount_(10).liveOptionAvailable ? PARTICIPATION_OPTIONS : nonLive;
   if (closedChoices.length !== 10 || closedChoices.includes(LIVE_OPTION)) throw new Error('Closed-choice test failed.');
   if (!nonLive.every(option => closedChoices.includes(option))) throw new Error('A non-live participation option was removed.');
-  Logger.log('ALL CAPACITY TESTS PASSED: confirmed 1–8, waitlist 9–10, live option removed after 10, all 10 non-live options preserved.');
+  const mixedSelections = [
+    [LIVE_OPTION, 'Ayudar con la preparación / Help with setup'],
+    [LIVE_OPTION, 'Ayudar con la limpieza / Help with cleanup'],
+    [LIVE_OPTION, 'Exhibición de talentos / Talent display', 'Talento culinario / Culinary talent'],
+    [LIVE_OPTION, 'Puedo ayudar donde sea necesario / I can help wherever needed']
+  ];
+  mixedSelections.forEach(selections => {
+    if (!selections.includes(LIVE_OPTION)) throw new Error('Mixed-selection live detection failed.');
+    const preserved = selections.filter(option => option !== LIVE_OPTION);
+    if (!preserved.every(option => PARTICIPATION_OPTIONS.includes(option))) throw new Error('Mixed-selection non-live option was not preserved.');
+  });
+  const responseDataIsMutated = /setResponse|deleteResponse|submitGrades/.test(onTalentNightFormSubmit.toString());
+  if (responseDataIsMutated) throw new Error('Submit handler must not modify stored response selections.');
+  Logger.log('ALL CAPACITY TESTS PASSED: confirmed 1–8, waitlist 9–10, live option removed after 10, all 10 non-live options preserved, mixed selections retained, stored responses never overwritten.');
 }
 
 function showLivePerformanceStatus() {
