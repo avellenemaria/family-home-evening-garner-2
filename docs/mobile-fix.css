@@ -8,7 +8,8 @@
 .video-block[hidden] { display: none; }
 .video-block h3 { margin: 0; font: 900 1.8rem "Nunito", sans-serif; }
 .video-block p { margin: 5px 0; }
-.video-block video { width: 100%; border-radius: 13px; background: #233832; }
+.video-block > * { min-width: 0; }
+.video-block video { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 13px; background: #233832; }
 @media (max-width: 760px) {
   .gallery { grid-template-rows: 230px 150px 150px; }
   .gallery img { min-height: 0; }
