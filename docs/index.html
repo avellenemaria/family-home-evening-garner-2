@@ -1,46 +1,81 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Community Talent Night in Garner, NC — Monday, September 14, 2026, 6:30 PM–8:00 PM.">
-  <title>Community Talent Night | Garner, NC</title>
+  <meta name="theme-color" content="#d94f3d">
+  <meta name="description" content="Noche de Talentos de la Comunidad en Garner, NC — lunes, 14 de septiembre de 2026, 6:30 PM–8:00 PM.">
+  <title>Noche de Talentos de la Comunidad | Garner, NC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;800&family=Fraunces:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile-fix.css">
   <script src="config.js" defer></script>
   <script src="site.js" defer></script>
 </head>
 <body>
-  <main>
-    <section class="hero" aria-labelledby="event-title">
-      <div class="glow glowOne" aria-hidden="true"></div><div class="glow glowTwo" aria-hidden="true"></div>
-      <nav aria-label="Language navigation"><a href="#details">Details</a><span aria-hidden="true">•</span><a href="#detalles">Detalles</a></nav>
-      <div class="eyebrow">An evening to share what makes you shine · Una noche para compartir tu talento</div>
-      <h1 id="event-title"><span>COMMUNITY</span><span class="accent">TALENT NIGHT</span></h1>
-      <p class="titleEs">NOCHE DE TALENTOS DE LA COMUNIDAD</p>
-      <div class="eventLine">
-        <div><span class="label">Date · Fecha</span><strong>Monday, September 14, 2026</strong><span>Lunes, 14 de septiembre de 2026</span></div>
-        <div class="timeBlock"><span class="label">Time · Hora</span><strong>6:30 PM–8:00 PM</strong></div>
-        <div><span class="label">Location · Lugar</span><strong>1433 Aversboro Rd</strong><span>Garner, NC 27529</span></div>
+  <a class="skip" href="#contenido">Saltar al contenido · Skip to content</a>
+  <header class="hero" id="inicio">
+    <div class="hero-media" data-hero-media aria-hidden="true">
+      <div class="media-fallback">
+        <span class="spark">♪</span><span class="spark">★</span><span class="spark">✦</span>
+        <p>Una noche para celebrar lo que nuestra comunidad sabe hacer</p>
       </div>
-      <a class="primaryButton" href="#participate" data-form-link>Share your talent · Comparte tu talento</a>
-      <p class="free">Free community event · Evento comunitario gratuito</p>
+    </div>
+    <div class="hero-shade"></div>
+    <nav><a href="#participar">Participar</a><a href="#momentos">Momentos</a><a href="#lugar">Lugar</a></nav>
+    <div class="hero-content">
+      <p class="overline">Rama Garner 2 presenta</p>
+      <h1>NOCHE DE TALENTOS<br><span>DE LA COMUNIDAD</span></h1>
+      <p class="english-title" lang="en">Community Talent Night</p>
+      <div class="hero-details">
+        <p><strong>Lunes, 14 de septiembre de 2026</strong><span lang="en">Monday, September 14, 2026</span></p>
+        <p><strong>6:30 PM–8:00 PM</strong></p>
+        <p><strong>1433 Aversboro Rd</strong><span>Garner, NC 27529</span></p>
+      </div>
+      <p class="invitation"><strong>¡Ven a compartir tu talento o simplemente a disfrutar del espectáculo!</strong><span lang="en">Come share your talent—or simply come enjoy the show!</span></p>
+      <a class="cta" href="#participar" data-form-link><strong>INSCRÍBETE PARA PARTICIPAR</strong><span lang="en">Sign up to participate</span></a>
+      <p class="form-status" data-form-status>Inscripción próximamente · Sign-up coming soon</p>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="welcome wrap">
+      <div><p class="eyebrow">Todos tienen un lugar aquí</p><h2>Tu talento. Tu familia.<br><em>Nuestra comunidad.</em></h2></div>
+      <div class="welcome-copy"><p><strong>Todas las edades son bienvenidas.</strong> Invita a tu familia, amigos y vecinos. No es necesario ser miembro de La Iglesia de Jesucristo de los Santos de los Últimos Días para asistir o participar.</p><p lang="en">All ages are welcome. Invite your family, friends, and neighbors. You do not need to be a member of The Church of Jesus Christ of Latter-day Saints to attend or participate.</p></div>
     </section>
-    <section class="welcome" id="details">
-      <div class="sectionIntro"><span class="kicker">Everyone belongs on our stage</span><h2>Bring your talent.<br>Bring your people.</h2></div>
-      <div class="bilingualCopy"><p>Music, dance, comedy, poetry, art, and delightful surprises—we’re gathering neighbors of every age for a joyful evening of creativity and connection.</p><p lang="es" id="detalles">Música, baile, comedia, poesía, arte y sorpresas maravillosas—reuniremos a vecinos de todas las edades para una noche alegre de creatividad y amistad.</p></div>
+
+    <section class="participation" id="participar">
+      <div class="wrap">
+        <div class="section-heading"><p class="eyebrow">Hay muchas maneras de participar</p><h2>¿Qué te gustaría compartir?</h2><p lang="en">How would you like to join in?</p></div>
+        <div class="option-grid">
+          <article class="option live"><span class="number">01</span><div class="icon" aria-hidden="true">♫</div><h3>Presentación en vivo</h3><p class="en" lang="en">Live Performance</p><p>Canto · Instrumentos · Baile · Poesía · Presentaciones culturales · Otras presentaciones</p><p class="note"><strong>3 minutos o menos.</strong> Los espacios son limitados; registrarse no garantiza un lugar.</p><p class="translation" lang="en">3 minutes or less. Space is limited; registration does not guarantee a performance slot.</p></article>
+          <article class="option display"><span class="number">02</span><div class="icon" aria-hidden="true">✦</div><h3>Exhibición de talentos</h3><p class="en" lang="en">Talent Showcase</p><p>Pintura · Dibujo · Fotografía · Manualidades · Costura o crochet · Carpintería · Escritura</p><p class="note">Las creaciones estarán expuestas alrededor del salón.</p><p class="translation" lang="en">Creative work will be displayed around the room.</p></article>
+          <article class="option food"><span class="number">03</span><div class="icon" aria-hidden="true">♥</div><h3>Talento culinario</h3><p class="en" lang="en">Culinary Talent</p><p>Comparte pequeñas muestras de algo que disfrutas preparar.</p><p class="note">Porciones pequeñas, fáciles de servir y comer—como un refrigerio, no una comida completa.</p><p class="translation" lang="en">Share small, snack-size samples that are easy to serve and enjoy.</p></article>
+          <article class="option help"><span class="number">04</span><div class="icon" aria-hidden="true">☀</div><h3>Ayudar con la actividad</h3><p class="en" lang="en">Volunteer</p><p>Preparación · Sillas y exhibiciones · Refrigerios · Ayuda durante la actividad · Limpieza</p><p class="note">¡Tus manos y tu sonrisa hacen la diferencia!</p><p class="translation" lang="en">Your helping hands and friendly smile make a difference!</p></article>
+        </div>
+        <div class="center"><a class="cta dark" href="#participar" data-form-link><strong>QUIERO PARTICIPAR</strong><span lang="en">I want to participate</span></a></div>
+      </div>
     </section>
-    <section class="participate" id="participate">
-      <div class="card performer"><span class="cardNumber">01</span><h3>Take the stage</h3><p>Solo acts, groups, and talents of every kind are welcome. Family-friendly performances, please.</p><p lang="es">Solistas, grupos y talentos de todo tipo son bienvenidos. Las presentaciones deben ser apropiadas para toda la familia.</p><span class="comingSoon" data-form-status>Performer sign-up coming soon · Inscripción próximamente</span></div>
-      <div class="card audience"><span class="cardNumber">02</span><h3>Come cheer</h3><p>No talent required—just bring your family, friends, and applause. Everyone in the community is invited.</p><p lang="es">No necesitas presentar un talento—solo trae a tu familia, amigos y aplausos. Toda la comunidad está invitada.</p><span class="comingSoon">No ticket needed · No se necesita boleto</span></div>
+
+    <section class="moments wrap" id="momentos">
+      <div class="section-heading"><p class="eyebrow">Así celebramos juntos</p><h2>Momentos de nuestra comunidad</h2><p lang="en">Moments from our community</p></div>
+      <div class="gallery" data-gallery>
+        <div class="photo-placeholder wide"><span>Fotos del talento y la alegría de nuestra comunidad</span><small>Real event photos will appear here</small></div>
+        <div class="photo-placeholder"><span>Familias</span><small>Families</small></div>
+        <div class="photo-placeholder"><span>Creatividad</span><small>Creativity</small></div>
+      </div>
+      <div class="experience"><div><span aria-hidden="true">♪</span><strong>Presentaciones</strong><small lang="en">Performances</small></div><div><span aria-hidden="true">✦</span><strong>Exhibiciones</strong><small lang="en">Talent displays</small></div><div><span aria-hidden="true">♥</span><strong>Refrigerios</strong><small lang="en">Snacks</small></div><div><span aria-hidden="true">☀</span><strong>Tiempo juntos</strong><small lang="en">Time together</small></div></div>
     </section>
-    <section class="location" aria-labelledby="location-title">
-      <div><span class="kicker">Save the date · Reserva la fecha</span><h2 id="location-title">Meet us in Garner</h2><p>The Church of Jesus Christ of Latter-day Saints<br>1433 Aversboro Rd<br>Garner, NC 27529</p><a class="directions" href="https://www.google.com/maps/search/?api=1&amp;query=1433+Aversboro+Rd+Garner+NC+27529" target="_blank" rel="noreferrer">Get directions · Cómo llegar ↗</a></div>
-      <div class="dateStamp" aria-label="Monday, September 14, 2026, 6:30 PM–8:00 PM"><span>SEP</span><strong>14</strong><small>2026</small></div>
+
+    <section class="location" id="lugar">
+      <div class="wrap location-grid"><div><p class="eyebrow">Te esperamos en Garner</p><h2>¡Ven y acompáñanos!</h2><p class="en-head" lang="en">Come join us!</p><address><strong>La Iglesia de Jesucristo de los Santos de los Últimos Días</strong><span lang="en">The Church of Jesus Christ of Latter-day Saints</span><br>1433 Aversboro Rd<br>Garner, NC 27529</address><a class="directions" href="https://www.google.com/maps/search/?api=1&amp;query=1433+Aversboro+Rd+Garner+NC+27529" target="_blank" rel="noreferrer">CÓMO LLEGAR <span lang="en">· Get directions ↗</span></a></div><div class="date-card"><span>SEPTIEMBRE</span><strong>14</strong><small>LUNES · MONDAY</small><b>6:30–8:00 PM</b></div></div>
     </section>
-    <footer><p>Hosted by the Garner 2 Branch of The Church of Jesus Christ of Latter-day Saints.</p><p lang="es">Organizado por la Rama Garner 2 de La Iglesia de Jesucristo de los Santos de los Últimos Días.</p></footer>
+
+    <section class="final-cta"><div class="wrap"><p>¿Listo para compartir?</p><h2>¡Queremos celebrar tu talento!</h2><p lang="en">We can’t wait to celebrate your talent!</p><a class="cta light" href="#participar" data-form-link><strong>INSCRÍBETE PARA PARTICIPAR</strong><span lang="en">Sign up to participate</span></a></div></section>
   </main>
+
+  <footer><div class="wrap"><p><strong>Organizado por la Rama Garner 2 de La Iglesia de Jesucristo de los Santos de los Últimos Días.</strong></p><p lang="en">Hosted by the Garner 2 Branch of The Church of Jesus Christ of Latter-day Saints.</p><a href="#inicio">Volver arriba · Back to top ↑</a></div></footer>
 </body>
 </html>
