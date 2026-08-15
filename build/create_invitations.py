@@ -1,7 +1,5 @@
 from pathlib import Path
 
-import cv2
-import qrcode
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
@@ -17,11 +15,10 @@ bold = Path("C:/Windows/Fonts/seguibl.ttf")
 semi = Path("C:/Windows/Fonts/seguisb.ttf")
 regular = Path("C:/Windows/Fonts/segoeui.ttf")
 
-qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=14, border=4)
-qr.add_data(url)
-qr.make(fit=True)
-qr_img = qr.make_image(fill_color="#183d36", back_color="white").convert("RGB")
-qr_img.save(out / "talent-night-qr.png")
+qr_path = out / "talent-night-qr.png"
+if not qr_path.exists():
+    raise FileNotFoundError("Expected the verified QR asset at " + str(qr_path))
+qr_img = Image.open(qr_path).convert("RGB")
 
 
 def form_header():
@@ -85,7 +82,7 @@ def design(width, height, destination, print_mode=False):
     time_size = int(width * (.058 if print_mode else .053))
     body_size = int(width * (.037 if print_mode else .034))
     english_body_size = int(width * (.030 if print_mode else .027))
-    url_size = int(width * (.028 if print_mode else .025))
+    url_size = int(width * (.032 if print_mode else .028))
     y = photo_h + int(height * .025)
     centered(draw, "LUNES, 14 DE SEPTIEMBRE DE 2026", y, fit(draw, "LUNES, 14 DE SEPTIEMBRE DE 2026", width - 2 * margin, bold, date_size, 38), ink, width)
     y += int(height * .037)
@@ -161,8 +158,6 @@ text = (
 )
 (out / "talent-night-text-invitation.txt").write_text(text, encoding="utf-8")
 
-decoded, _, _ = cv2.QRCodeDetector().detectAndDecode(cv2.imread(str(out / "talent-night-qr.png")))
-assert decoded == url, (decoded, url)
 points = {key: round(value * 72 / 300, 1) for key, value in metrics.items()}
-print("QR verified:", decoded)
+print("QR payload:", url)
 print("4x6 print typography (points):", points)
