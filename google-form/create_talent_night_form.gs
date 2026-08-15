@@ -211,3 +211,19 @@ function showLivePerformanceStatus() {
   Logger.log('PUBLIC FORM URL: ' + form.getPublishedUrl());
   Logger.log('EDIT FORM URL: ' + form.getEditUrl());
 }
+
+function simplifyTalentNightFormIntro() {
+  const form = getTalentNightForm_();
+  form.setTitle('Noche de Talentos de la Comunidad | Community Talent Night');
+  form.setDescription(
+    'Lunes, 14 de septiembre de 2026\n' +
+    'Monday, September 14, 2026\n\n' +
+    '6:30 PM–8:00 PM\n\n' +
+    '1433 Aversboro Rd, Garner, NC 27529\n\n' +
+    '¡Gracias por participar!\n' +
+    'Puedes compartir un talento, ayudar con la actividad o hacer ambas cosas.\n\n' +
+    'Thank you for participating!\n' +
+    'You may share a talent, help with the activity, or both.'
+  );
+  Logger.log('FORM INTRO SIMPLIFIED; QUESTIONS AND CAPACITY SETTINGS UNCHANGED.');
+}
