@@ -1,5 +1,7 @@
 window.EVENT_CONFIG = {
   GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdXiUPaRNk8rTeDQWShAoHu8affV10Pm932bTpMbSyzvCddEA/viewform",
+  REGISTRATION_URL: "register.html",
+  REGISTRATION_API_URL: "https://script.google.com/macros/s/AKfycbzdhyuXBCz5AOVDaEW4hND5pu05GhcA0kFsUyUGRjyXMgYmvUnsQ9mD43bGOgjLWQ5H/exec",
   HERO_MEDIA_URL: "media/talent-night/hero-folkloric-dancers.webp",
   HERO_MEDIA_ALT: "Cuatro participantes con vestidos folclóricos coloridos posan en el gimnasio frente a banderas internacionales.",
   GALLERY_IMAGES: [

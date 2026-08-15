@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f6f65">
+  <meta name="description" content="Inscripción para la Noche de Talentos de la Comunidad en Garner, NC.">
+  <title>Inscripción | Noche de Talentos de la Comunidad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="registration.css?v=1">
+  <script src="config.js" defer></script>
+  <script src="registration.js?v=1" defer></script>
+</head>
+<body class="registration-page">
+  <a class="skip" href="#registro">Saltar al formulario · Skip to form</a>
+  <header class="registration-hero">
+    <a class="back-link" href="index.html">← Volver al evento <span lang="en">· Back to event</span></a>
+    <div class="registration-hero-copy">
+      <p class="overline">Rama Garner 2 presenta</p>
+      <h1>INSCRÍBETE PARA<br><span>PARTICIPAR</span></h1>
+      <p class="registration-en" lang="en">Sign up to participate</p>
+      <div class="registration-event">
+        <strong>Lunes, 14 de septiembre de 2026</strong>
+        <span lang="en">Monday, September 14, 2026</span>
+        <b>6:30 PM–8:00 PM</b>
+        <span>1433 Aversboro Rd · Garner, NC 27529</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="registro" class="registration-wrap">
+    <div class="form-intro">
+      <p class="eyebrow">Tu talento. Tu familia. Nuestra comunidad.</p>
+      <h2>¿Cómo te gustaría participar?</h2>
+      <p lang="en">How would you like to participate?</p>
+      <p>Selecciona todas las opciones que correspondan. <span lang="en">Select all that apply.</span></p>
+    </div>
+
+    <div class="capacity-banner" data-capacity-banner role="status" hidden></div>
+    <div class="form-alert" data-form-alert role="alert" hidden></div>
+
+    <form class="native-form" data-registration-form method="post" target="submission-frame" novalidate>
+      <input type="hidden" name="source" value="website">
+      <input type="hidden" name="clientId" data-client-id>
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <fieldset class="form-card basic-card">
+        <legend><span>01</span> Información básica <small lang="en">Basic information</small></legend>
+        <div class="field-grid">
+          <label class="field"><span>Nombre <small lang="en">Name</small></span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="field"><span>Teléfono <small lang="en">Phone</small></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+          <label class="field field-wide"><span>Correo electrónico <small lang="en">Email — optional</small></span><input name="email" type="email" autocomplete="email" inputmode="email"></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-card participation-card">
+        <legend><span>02</span> Participación <small lang="en">Participation</small></legend>
+        <p class="field-prompt">Selecciona todas las opciones que correspondan. <small lang="en">Select all that apply.</small></p>
+        <div class="choice-grid" data-participation-choices>
+          <label class="choice live-choice"><input type="checkbox" name="participation" value="live"><span><strong>Presentación en vivo</strong><small lang="en">Live performance</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="display"><span><strong>Exhibición de talentos</strong><small lang="en">Talent display</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="culinary"><span><strong>Talento culinario</strong><small lang="en">Culinary talent</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="snacks"><span><strong>Traer refrigerios</strong><small lang="en">Bring snacks</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="setup"><span><strong>Ayudar con la preparación</strong><small lang="en">Help with setup</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="during"><span><strong>Ayudar durante la actividad</strong><small lang="en">Help during the event</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="cleanup"><span><strong>Ayudar con la limpieza</strong><small lang="en">Help with cleanup</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="wherever"><span><strong>Ayudar donde sea necesario</strong><small lang="en">Help wherever needed</small></span></label>
+          <label class="choice"><input type="checkbox" name="participation" value="other"><span><strong>Otro</strong><small lang="en">Other</small></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-card conditional live-section" data-section="live" hidden>
+        <legend><span>03</span> Presentación en vivo <small lang="en">Live performance</small></legend>
+        <div class="important-note"><strong>3 minutos o menos.</strong> Los espacios son limitados. Te confirmaremos tu turno después de registrarte.<small lang="en">3 minutes or less. Space is limited. We’ll confirm your performance slot after you register.</small></div>
+        <div class="field-grid">
+          <label class="field field-wide"><span>¿Qué talento vas a compartir? <small lang="en">What talent will you share?</small></span><textarea name="liveTalent" rows="3"></textarea></label>
+          <fieldset class="mini-group"><legend>¿Participará alguien contigo? <small lang="en">Will anyone join you?</small></legend><label><input type="radio" name="liveGroup" value="yes"> Sí / Yes</label><label><input type="radio" name="liveGroup" value="no"> No</label></fieldset>
+          <label class="field field-wide" data-group-names hidden><span>Nombres de los demás participantes <small lang="en">Names of additional participants</small></span><textarea name="liveGroupNames" rows="2"></textarea></label>
+          <label class="field"><span>Duración <small lang="en">Performance duration</small></span><select name="liveDuration"><option value="">Selecciona / Select</option><option>1 minuto o menos / 1 minute or less</option><option>1–2 minutos / 1–2 minutes</option><option>2–3 minutos / 2–3 minutes</option></select></label>
+          <fieldset class="mini-group"><legend>¿Necesitas micrófono? <small lang="en">Need a microphone?</small></legend><label><input type="radio" name="microphone" value="yes"> Sí / Yes</label><label><input type="radio" name="microphone" value="no"> No</label></fieldset>
+          <fieldset class="mini-group"><legend>¿Necesitas música o audio? <small lang="en">Need music or audio?</small></legend><label><input type="radio" name="audio" value="yes"> Sí / Yes</label><label><input type="radio" name="audio" value="no"> No</label></fieldset>
+          <label class="field field-wide"><span>Otras necesidades de preparación <small lang="en">Other setup needs — optional</small></span><textarea name="liveSetup" rows="3"></textarea></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-card conditional" data-section="display" hidden>
+        <legend><span>04</span> Exhibición de talentos <small lang="en">Talent display</small></legend>
+        <div class="field-grid"><label class="field field-wide"><span>¿Qué vas a exhibir? <small lang="en">What will you display?</small></span><textarea name="displayTalent" rows="3"></textarea></label><label class="field"><span>Espacio aproximado <small lang="en">Approximate space needed</small></span><select name="displaySpace"><option value="">Selecciona / Select</option><option>Espacio pequeño / Small space</option><option>Media mesa / Half a table</option><option>Una mesa / One table</option><option>Otro / Other</option></select></label></div>
+      </fieldset>
+
+      <fieldset class="form-card conditional" data-section="culinary" hidden>
+        <legend><span>05</span> Talento culinario <small lang="en">Culinary talent</small></legend>
+        <div class="important-note"><strong>Porciones pequeñas y fáciles de compartir.</strong> Esta es una actividad con refrigerios, no una comida completa.<small lang="en">Small, easy-to-share portions only. This is a snack-style event, not a full meal.</small></div>
+        <label class="field"><span>¿Qué piensas preparar? <small lang="en">What will you prepare?</small></span><textarea name="culinaryItem" rows="3"></textarea></label>
+      </fieldset>
+
+      <fieldset class="form-card conditional" data-section="snacks" hidden>
+        <legend><span>06</span> Refrigerios <small lang="en">Snacks</small></legend>
+        <label class="field"><span>¿Qué piensas traer? <small lang="en">What do you plan to bring?</small></span><textarea name="snackItem" rows="3"></textarea></label>
+      </fieldset>
+
+      <fieldset class="form-card conditional" data-section="volunteer" hidden>
+        <legend><span>07</span> Ayuda voluntaria <small lang="en">Volunteer help</small></legend>
+        <label class="field"><span>Nota opcional <small lang="en">Optional note</small></span><textarea name="volunteerNote" rows="3" placeholder="Horarios, preferencias u otra información / Timing, preferences, or other information"></textarea></label>
+      </fieldset>
+
+      <fieldset class="form-card conditional" data-section="other" hidden>
+        <legend><span>08</span> Otro <small lang="en">Other</small></legend>
+        <label class="field"><span>Cuéntanos cómo te gustaría participar <small lang="en">Tell us how you would like to participate</small></span><textarea name="otherParticipation" rows="3"></textarea></label>
+      </fieldset>
+
+      <label class="consent"><input type="checkbox" name="accuracy" value="yes" required><span>Confirmo que esta información es correcta. <small lang="en">I confirm that this information is correct.</small></span></label>
+      <button class="submit-button" type="submit"><strong>ENVIAR INSCRIPCIÓN</strong><span lang="en">Submit registration</span></button>
+      <p class="privacy-note">No se requiere una cuenta de Google. <span lang="en">No Google account required.</span></p>
+    </form>
+
+    <section class="success-card" data-success hidden tabindex="-1">
+      <span class="success-mark">✓</span><h2>¡Gracias por participar!</h2><p>Hemos recibido tu inscripción. Nos comunicaremos contigo si necesitamos confirmar detalles.</p><p lang="en">Thank you for participating! We received your registration. We’ll contact you if we need to confirm any details.</p><div class="performance-result" data-performance-result hidden></div><a class="cta dark" href="index.html"><strong>VOLVER AL EVENTO</strong><span lang="en">Back to event</span></a>
+    </section>
+    <iframe name="submission-frame" title="Procesamiento de inscripción" hidden></iframe>
+  </main>
+</body>
+</html>

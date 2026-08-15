@@ -1,12 +1,12 @@
 (() => {
   const config = window.EVENT_CONFIG || {};
-  const formUrl = config.GOOGLE_FORM_URL?.trim();
-  const validForm = formUrl && /^https:\/\/(docs\.google\.com\/forms|forms\.gle)\//.test(formUrl);
+  const formUrl = config.REGISTRATION_URL?.trim() || "register.html";
+  const validForm = /^(https?:\/\/|register\.html|\.\/register\.html)/.test(formUrl);
   document.querySelectorAll("[data-form-link]").forEach((link) => {
     if (!validForm) return;
     link.href = formUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
   });
   if (validForm) document.querySelector("[data-form-status]").textContent = "Inscripción abierta · Sign-up is open";
 
